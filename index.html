@@ -8,6 +8,7 @@
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=zodiak@400,500,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="builder.css">
+  <link rel="stylesheet" href="mixed.css">
 </head>
 <body>
 <header class="header"><div class="headerin">
@@ -55,6 +56,7 @@
   <div class="pit-mode-tabs" role="tablist">
     <button class="pit-mode active" data-mode="map">Visual Map</button>
     <button class="pit-mode" data-mode="builder">Pathway Builder</button>
+    <button class="pit-mode" data-mode="mixed">Mixed Mastery</button>
     <button class="pit-mode" data-mode="forward">Forward Recall</button>
     <button class="pit-mode" data-mode="reverse">Reverse Recall</button>
   </div>
@@ -87,6 +89,16 @@
       <div class="builder-stats"><div><span>Cards placed</span><strong id="builderPlaced">0 / 4</strong></div><div><span>Attempts</span><strong id="builderAttempts">0</strong></div><div><span>Pathways mastered</span><strong id="builderMastered">0 / 11</strong></div></div>
     </section>
   </div>
+</section>
+
+<section id="pitMixedMode" class="pit-mode-view hide">
+  <section class="panel mixed-header">
+    <div><span class="eyebrow">Mixed-pathway challenge</span><h2>Separate the signals, then rebuild every pathway.</h2><p>Cards from several endocrine pathways are combined into one bank. Decide which pathway each card belongs to and where it goes.</p></div>
+    <div class="mixed-controls"><label for="mixedCount">Pathways</label><select id="mixedCount" class="select"><option value="2">2 pathways</option><option value="3" selected>3 pathways</option><option value="4">4 pathways</option></select><button class="btn" id="mixedNew">New challenge</button><button class="btn primary" id="mixedCheck">Check all</button></div>
+  </section>
+  <section id="mixedLanes" class="mixed-lanes"></section>
+  <section class="panel mixed-bank-wrap"><div class="mixed-bank-heading"><div><strong>Shared card bank</strong><span class="small">Select a card, then choose a numbered slot in the correct pathway.</span></div><span id="mixedRemaining" class="route-badge"></span></div><div id="mixedCards" class="mixed-card-bank"></div></section>
+  <section class="mixed-bottom"><div id="mixedFeedback" class="feedbackbox" aria-live="polite">Start a challenge, then reconstruct each pathway.</div><div class="mixed-stats"><div><span>Attempts</span><strong id="mixedAttempts">0</strong></div><div><span>Rounds mastered</span><strong id="mixedMastered">0</strong></div><div><span>Current difficulty</span><strong id="mixedDifficulty">3 pathways</strong></div></div></section>
 </section>
 
 <section id="pitRecallMode" class="pit-mode-view hide">
@@ -122,5 +134,6 @@
 </main>
 <script src="app.js"></script>
 <script src="builder.js"></script>
+<script src="mixed.js"></script>
 </body>
 </html>
