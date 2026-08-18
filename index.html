@@ -7,6 +7,7 @@
   <meta name="description" content="Interactive endocrine pathway and pituitary mastery activities for A&P instruction." />
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=zodiak@400,500,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="builder.css">
 </head>
 <body>
 <header class="header"><div class="headerin">
@@ -53,6 +54,7 @@
 <section class="panel pit-controls">
   <div class="pit-mode-tabs" role="tablist">
     <button class="pit-mode active" data-mode="map">Visual Map</button>
+    <button class="pit-mode" data-mode="builder">Pathway Builder</button>
     <button class="pit-mode" data-mode="forward">Forward Recall</button>
     <button class="pit-mode" data-mode="reverse">Reverse Recall</button>
   </div>
@@ -64,6 +66,26 @@
     <section class="panel control-group direct"><div class="group-kicker">Control route 1</div><h2>Direct control by nervous system</h2><p>Neural input directly controls the endocrine tissue.</p><div id="directPathways" class="pathway-stack"></div></section>
     <section class="panel control-group anterior"><div class="group-kicker">Control route 2</div><h2>Anterior pituitary</h2><p>Hypothalamic regulatory hormones act through the hypophyseal portal system, then the anterior pituitary releases its hormones.</p><div id="anteriorPathways" class="pathway-grid"></div></section>
     <section class="panel control-group posterior"><div class="group-kicker">Control route 3</div><h2>Posterior pituitary</h2><p>Hypothalamic hormones are released from the posterior pituitary to their targets.</p><div id="posteriorPathways" class="pathway-grid"></div></section>
+  </div>
+</section>
+
+<section id="pitBuilderMode" class="pit-mode-view hide">
+  <div class="builder-layout">
+    <aside class="panel builder-sidebar">
+      <span class="eyebrow">Construct from memory</span>
+      <h2>Choose a pathway</h2>
+      <p>Place the shuffled pieces into the correct order. The route is provided, but the pathway itself is not.</p>
+      <div id="builderPathList" class="builder-path-list"></div>
+      <button class="btn" id="builderMystery">🎲 Mystery pathway</button>
+    </aside>
+    <section class="panel builder-workspace">
+      <div class="toprow"><div><h2 id="builderTitle">ACTH pathway</h2><p id="builderRoute"></p></div><div class="toolbar"><button class="btn" id="builderReset">Reset</button><button class="btn primary" id="builderCheck">Check pathway</button></div></div>
+      <div class="builder-instructions" id="builderInstructions">Select a card, then select the numbered slot where it belongs.</div>
+      <div id="builderSlots" class="builder-slots"></div>
+      <div id="builderCards" class="builder-cards"></div>
+      <div id="builderFeedback" class="feedbackbox" aria-live="polite">Build the pathway before checking.</div>
+      <div class="builder-stats"><div><span>Cards placed</span><strong id="builderPlaced">0 / 4</strong></div><div><span>Attempts</span><strong id="builderAttempts">0</strong></div><div><span>Pathways mastered</span><strong id="builderMastered">0 / 11</strong></div></div>
+    </section>
   </div>
 </section>
 
@@ -99,5 +121,6 @@
 <p class="footer">Designed for rapid endocrine retrieval, pathway reasoning, and low-stakes discussion during endocrine physiology instruction.</p>
 </main>
 <script src="app.js"></script>
+<script src="builder.js"></script>
 </body>
 </html>
