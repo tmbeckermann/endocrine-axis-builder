@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Endocrine Axis Builder</title>
-  <meta name="description" content="Interactive endocrine pathway builder for A&P instruction with guided sorting, challenge mode, and pathology prediction." />
+  <meta name="description" content="Interactive endocrine pathway and pituitary mastery activities for A&P instruction." />
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=zodiak@400,500,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -14,6 +14,12 @@
   <div class="actions"><button class="btn icon" id="themeBtn" aria-label="Toggle theme">◐</button><button class="btn" id="studentInstructorBtn">Student view</button><button class="btn primary" id="resetBtn">Reset axis</button></div>
 </div></header>
 <main class="shell">
+<nav class="activity-tabs" aria-label="Study activities">
+  <button class="activity-tab active" data-view="axisView">Axis Builder</button>
+  <button class="activity-tab" data-view="pituitaryView">Pituitary Mastery</button>
+</nav>
+
+<div id="axisView" class="activity-view">
 <section class="hero">
   <div><span class="eyebrow">A&P II retrieval practice</span><h1>Build the pathway, then predict what happens when it breaks.</h1><p>Start with supported sorting, remove the scaffolds, then apply the pathway to a short disorder or perturbation question.</p></div>
   <aside class="panel overview"><div><strong>Three learning levels</strong><p>Guided Sort, Build the Pathway, and Predict the Disorder.</p></div><div class="mini"><div><strong>6</strong><span class="small">core pathways</span></div><div><strong>3</strong><span class="small">learning levels</span></div><div><strong id="heroMastery">0 / 6</strong><span class="small">mastered</span></div><div><strong>Mystery</strong><span class="small">random axis option</span></div></div></aside>
@@ -37,6 +43,59 @@
   </section>
 </section>
 </section>
+</div>
+
+<div id="pituitaryView" class="activity-view hide">
+<section class="pit-hero">
+  <div><span class="eyebrow">Pituitary Mastery</span><h1>Learn the pituitary pathways as a system, not a list.</h1><p>Practice the control route, pituitary hormone, target, and downstream hormone or tissue effect. The pathway set follows the course diagram.</p></div>
+  <aside class="panel pit-score"><strong id="pitScore">0 / 0</strong><span class="small">recall questions correct this session</span><button class="btn" id="pitResetScore">Reset score</button></aside>
+</section>
+<section class="panel pit-controls">
+  <div class="pit-mode-tabs" role="tablist">
+    <button class="pit-mode active" data-mode="map">Visual Map</button>
+    <button class="pit-mode" data-mode="forward">Forward Recall</button>
+    <button class="pit-mode" data-mode="reverse">Reverse Recall</button>
+  </div>
+  <div class="toolbar"><button class="btn" id="pitHideLabels">Hide pathway details</button><button class="btn primary" id="pitNextQuestion">New recall question</button></div>
+</section>
+
+<section id="pitMapMode" class="pit-mode-view">
+  <div class="control-groups">
+    <section class="panel control-group direct"><div class="group-kicker">Control route 1</div><h2>Direct control by nervous system</h2><p>Neural input directly controls the endocrine tissue.</p><div id="directPathways" class="pathway-stack"></div></section>
+    <section class="panel control-group anterior"><div class="group-kicker">Control route 2</div><h2>Anterior pituitary</h2><p>Hypothalamic regulatory hormones act through the hypophyseal portal system, then the anterior pituitary releases its hormones.</p><div id="anteriorPathways" class="pathway-grid"></div></section>
+    <section class="panel control-group posterior"><div class="group-kicker">Control route 3</div><h2>Posterior pituitary</h2><p>Hypothalamic hormones are released from the posterior pituitary to their targets.</p><div id="posteriorPathways" class="pathway-grid"></div></section>
+  </div>
+</section>
+
+<section id="pitRecallMode" class="pit-mode-view hide">
+  <div class="pit-recall-layout">
+    <section class="panel recall-card">
+      <span class="eyebrow" id="recallDirection">Forward recall</span>
+      <h2 id="recallPrompt">Select New recall question.</h2>
+      <p id="recallContext"></p>
+      <div id="recallChoices" class="recall-choices"></div>
+      <div id="recallFeedback" class="feedbackbox">Choose the best answer.</div>
+    </section>
+    <aside class="panel recall-key"><h2>Hormone key</h2><div id="pitHormoneKey" class="hormone-key"></div></aside>
+  </div>
+</section>
+
+<section class="panel pit-summary">
+  <h2>What students should be able to reconstruct</h2>
+  <div class="summary-grid">
+    <div><strong>ACTH</strong><span>Anterior pituitary → adrenal cortex → glucocorticoids</span></div>
+    <div><strong>TSH</strong><span>Anterior pituitary → thyroid gland → T3/T4</span></div>
+    <div><strong>GH</strong><span>Anterior pituitary → liver → somatomedins → bone, muscle, other tissues</span></div>
+    <div><strong>PRL</strong><span>Anterior pituitary → mammary glands</span></div>
+    <div><strong>FSH / LH</strong><span>Anterior pituitary → testes or ovaries → sex hormones and inhibin</span></div>
+    <div><strong>MSH</strong><span>Anterior pituitary → melanocytes</span></div>
+    <div><strong>ADH</strong><span>Posterior pituitary → kidneys</span></div>
+    <div><strong>OXT</strong><span>Posterior pituitary → reproductive smooth muscle and mammary glands</span></div>
+    <div><strong>Adrenal medulla</strong><span>Direct nervous control → epinephrine and norepinephrine</span></div>
+  </div>
+</section>
+</div>
+
 <p class="footer">Designed for rapid endocrine retrieval, pathway reasoning, and low-stakes discussion during endocrine physiology instruction.</p>
 </main>
 <script src="app.js"></script>
