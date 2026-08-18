@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Endocrine Axis Builder</title>
+  <meta name="description" content="Interactive endocrine pathway builder for A&P instruction with guided sorting, challenge mode, and pathology prediction." />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=zodiak@400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="header"><div class="headerin">
+  <div class="brand"><div class="mark">↳</div><div><strong>Endocrine Axis Builder</strong><span>Recognize → organize → explain → predict</span></div></div>
+  <div class="actions"><button class="btn icon" id="themeBtn" aria-label="Toggle theme">◐</button><button class="btn" id="studentInstructorBtn">Student view</button><button class="btn primary" id="resetBtn">Reset axis</button></div>
+</div></header>
+<main class="shell">
+<section class="hero">
+  <div><span class="eyebrow">A&P II retrieval practice</span><h1>Build the pathway, then predict what happens when it breaks.</h1><p>Start with supported sorting, remove the scaffolds, then apply the pathway to a short disorder or perturbation question.</p></div>
+  <aside class="panel overview"><div><strong>Three learning levels</strong><p>Guided Sort, Build the Pathway, and Predict the Disorder.</p></div><div class="mini"><div><strong>6</strong><span class="small">core pathways</span></div><div><strong>3</strong><span class="small">learning levels</span></div><div><strong id="heroMastery">0 / 6</strong><span class="small">mastered</span></div><div><strong>Mystery</strong><span class="small">random axis option</span></div></div></aside>
+</section>
+<section class="layout">
+<aside class="sidebar">
+  <section class="panel"><h2>Choose a pathway</h2><p>Or use Mystery Axis to remove the title clue.</p><div class="axis-list"><button class="axis" id="mysteryBtn"><strong>🎲 Mystery Axis</strong><span>Random pathway, title hidden until completion</span></button><div id="axisList"></div></div><div class="mastery"><div class="small"><span id="masteryText">0 of 6 mastered</span></div><div class="masterybar"><div id="masteryFill"></div></div></div></section>
+  <section class="panel"><h2>Card roles</h2><div class="legend"><div><span class="dot stimulus"></span>Stimulus</div><div><span class="dot gland"></span>Gland / source</div><div><span class="dot hormone"></span>Hormone</div><div><span class="dot target"></span>Target</div><div><span class="dot response"></span>Response</div><div><span class="dot feedback"></span>Feedback</div></div></section>
+  <section class="panel instructor-only hide"><h2>Instructor prompts</h2><p>Ask which variable is being regulated, where the sensor is, and what changes during hypo- or hypersecretion.</p></section>
+</aside>
+<section class="workspace">
+  <section class="panel">
+    <div class="toprow"><div><h2 id="axisTitle">Axis title</h2><p id="axisSubtitle"></p></div><div class="toolbar"><select class="select" id="levelSelect"><option value="guided">Level 1: Guided Sort</option><option value="challenge">Level 2: Build the Pathway</option><option value="predict">Level 3: Predict the Disorder</option></select><button class="btn" id="shuffleBtn">Shuffle</button><button class="btn primary" id="checkBtn">Check sequence</button></div></div>
+    <div class="level-card"><strong id="levelName">Level 1: Guided Sort</strong><span class="small" id="levelDescription">Card roles are visible. Build the six-step physiological story.</span></div>
+    <div class="prompt"><strong>Task</strong><span id="promptText"></span><div class="instructor-only hide small" id="teachingTip" style="margin-top:6px"></div></div>
+    <div class="bins" id="bins"></div>
+    <div class="cards" id="cards"></div>
+    <div class="stats"><div class="stat"><span id="placementStatLabel">Cards placed</span><strong id="placementStat">0 / 6</strong></div><div class="stat"><span>Attempts</span><strong id="attemptCount">0</strong></div><div class="stat"><span>Learning level</span><strong id="levelStat">Guided</strong></div><div class="stat"><span>Pathway mastery</span><strong id="axisStatus">Not yet</strong></div></div>
+    <div class="feedbackbox" id="feedbackBox" aria-live="polite">Select a card, then select the slot where it belongs.</div>
+    <div class="followup" id="followup"><h3>Predict the disorder</h3><p id="followupQuestion"></p><div class="choices" id="followupChoices"></div><div class="small" id="followupFeedback" style="margin-top:10px"></div></div>
+  </section>
+</section>
+</section>
+<p class="footer">Designed for rapid endocrine retrieval, pathway reasoning, and low-stakes discussion during endocrine physiology instruction.</p>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
